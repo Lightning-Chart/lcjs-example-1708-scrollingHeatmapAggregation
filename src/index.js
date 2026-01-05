@@ -99,7 +99,7 @@ const chart2 = lc
         defaultAxisX: { type: 'linear-highPrecision' },
         defaultAxisY: { type: 'linear-highPrecision' },
         textRenderer: htmlTextRenderer,
-        theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,,
+        // theme: Themes.darkGold
     })
     .setTitle('Scrolling Heatmap - Aggregation (Max)')
     .setTitleMargin({ top: 10, bottom: 10 })
