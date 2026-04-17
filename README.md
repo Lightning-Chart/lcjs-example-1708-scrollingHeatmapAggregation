@@ -19,15 +19,11 @@ The demo can be used as an example or a seed project. Local execution requires t
 
 ## Description
 
-This example demonstrates **Scrolling Heatmap Aggregation** in `HeatmapScrollingGridSeries`. You can also configure aggregation for a static `HeatmapGridSeries`.
+This example demonstrates Scrolling Heatmap Aggregation in `HeatmapScrollingGridSeries`. You can also configure aggregation for a static `HeatmapGridSeries`.
 
-By default, heatmaps display the closest heatmap cell value to each pixel that is rendered on the screen. With dense, high resolution heatmaps, this can mean that there is no guarantee which data value is displayed in a pixel.
+By default, heatmaps display the closest heatmap cell value to each pixel that is rendered on the screen. With dense, high resolution heatmaps, this can mean that there is no guarantee which data value is displayed in a pixel. Heatmap aggregation can be enabled to specify this behavior (which value to show when multiple cell values are contained by single pixel) at the expense of a performance hit.
 
-Heatmap aggregation can be enabled to specify this behavior (which value to show when multiple cell values are contained by single pixel) at the expense of a performance hit.
-
-In this example, the lower heatmap uses the `max` aggregation mode, making sudden **power spikes (shown in red)** much easier to identify in the data stream.
-
-# Heatmap Scrolling Grid Series aggregation
+In this example, the lower heatmap uses the `max` aggregation mode, making it much easier to identify signals in the data stream.
 
 In LightningChart JS, aggregation mode is configured with the `setAggregation` method. By default the aggregation mode is `undefined`. Bilinear interpolation is not supported simultaneously, so remember to disable it with `setIntensityInterpolation('disabled')`. 
 
@@ -38,8 +34,6 @@ heatmapSeries
     // Bilinear interpolation is not supported simultaneously
     .setIntensityInterpolation('disabled')
 ```
-
-The data used in this example: [ElectroSense PSD Spectrum Dataset](https://doi.org/10.5281/zenodo.7521246).
 
 ## API Links
 
@@ -69,13 +63,13 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 [3]: https://stackoverflow.com/questions/tagged/lightningchart
 [4]: https://lightningchart.com/support-services/
 
-© LightningChart Ltd 2009-2025. All rights reserved.
+© LightningChart Ltd 2009-2026. All rights reserved.
 
 
-[Scrolling Heatmap Grid Series]: https://lightningchart.com/js-charts/api-documentation/v8.1.0/classes/HeatmapScrollingGridSeriesIntensityValues.html
-[Paletted Fill Style]: https://lightningchart.com/js-charts/api-documentation/v8.1.0/classes/PalettedFill.html
-[Color Lookup Table]: https://lightningchart.com/js-charts/api-documentation/v8.1.0/classes/LUT.html
-[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v8.1.0/classes/ChartXY.html
-[Axis XY]: https://lightningchart.com/js-charts/api-documentation/v8.1.0/classes/Axis.html
-[Axis Automatic Scroll Strategies]: https://lightningchart.com/js-charts/api-documentation/v8.1.0/variables/AxisScrollStrategies.html
+[Scrolling Heatmap Grid Series]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/HeatmapScrollingGridSeriesIntensityValues.html
+[Paletted Fill Style]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/PalettedFill.html
+[Color Lookup Table]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/LUT.html
+[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/ChartXY.html
+[Axis XY]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/Axis.html
+[Axis Automatic Scroll Strategies]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/variables/AxisScrollStrategies.html
 
