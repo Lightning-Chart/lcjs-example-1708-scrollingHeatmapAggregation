@@ -66,10 +66,10 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2026. All rights reserved.
 
 
-[Scrolling Heatmap Grid Series]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/HeatmapScrollingGridSeriesIntensityValues.html
-[Paletted Fill Style]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/PalettedFill.html
-[Color Lookup Table]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/LUT.html
-[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/ChartXY.html
-[Axis XY]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/classes/Axis.html
-[Axis Automatic Scroll Strategies]: https://lightningchart.com/js-charts/api-documentation/v8.2.0/variables/AxisScrollStrategies.html
+[Scrolling Heatmap Grid Series]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/HeatmapScrollingGridSeriesIntensityValues.html
+[Paletted Fill Style]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/PalettedFill.html
+[Color Lookup Table]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/LUT.html
+[Chart XY]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/ChartXY.html
+[Axis XY]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/Axis.html
+[Axis Automatic Scroll Strategies]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/variables/AxisScrollStrategies.html
 
