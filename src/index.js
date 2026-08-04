@@ -16,9 +16,9 @@ const {
 const config = {
     framesPerSecond: 20,
     frameIntervalMs: (0.5 * 1000) / 20,
-    freqStartMHz: 0,      
+    freqStartMHz: 0,
     freqEndMHz: 400,
-    resolution: 1612,       
+    resolution: 1612,
     freqStepMHz: (400 - 0) / (1612 - 1),
     visibleFrameCount: 400,
 }
@@ -44,8 +44,6 @@ exampleContainer.append(containerChart1)
 const chart1 = lc
     .ChartXY({
         container: containerChart1,
-        defaultAxisX: { type: 'linear-highPrecision' },
-        defaultAxisY: { type: 'linear-highPrecision' },
         theme: (() => {
     const t = Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined
     return t && window.lcjsSmallView ? lcjs.scaleTheme(t, 0.5) : t
@@ -68,11 +66,11 @@ chart1.axisY
     }))
     .setPointerEvents(false)
     // .setTickStrategy(AxisTickStrategies.Empty)
-    .setTickStrategy(AxisTickStrategies.Numeric, (tickStrategy) => tickStrategy
-        .setFormattingFunction((frameIndex) => {
+    .setTickStrategy(AxisTickStrategies.Numeric, (tickStrategy) =>
+        tickStrategy.setFormattingFunction((frameIndex) => {
             const seconds = frameIndex / config.framesPerSecond
-            return seconds.toFixed(1) 
-        })
+            return seconds.toFixed(1)
+        }),
     )
     .setAnimationsEnabled(false)
 
@@ -107,8 +105,6 @@ exampleContainer.append(containerChart2)
 const chart2 = lc
     .ChartXY({
         container: containerChart2,
-        defaultAxisX: { type: 'linear-highPrecision' },
-        defaultAxisY: { type: 'linear-highPrecision' },
         theme: (() => {
     const t = Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined
     return t && window.lcjsSmallView ? lcjs.scaleTheme(t, 0.5) : t
@@ -130,11 +126,11 @@ chart2.axisY
         stopAxisAfter: false,
     }))
     .setPointerEvents(false)
-    .setTickStrategy(AxisTickStrategies.Numeric, (tickStrategy) => tickStrategy
-        .setFormattingFunction((frameIndex) => {
+    .setTickStrategy(AxisTickStrategies.Numeric, (tickStrategy) =>
+        tickStrategy.setFormattingFunction((frameIndex) => {
             const seconds = frameIndex / config.framesPerSecond
-            return seconds.toFixed(1) 
-        })
+            return seconds.toFixed(1)
+        }),
     )
     .setAnimationsEnabled(false)
 
@@ -180,10 +176,10 @@ const hideCursor = () => {
 const displayCursorAt = (x, y, value) => {
     charts.forEach((chart) => {
         const solveResults = chart.chart
-        .getSeries()    
-        // NOTE: Heatmap series doesn't currently have direct API syntax to solve nearest from axis coordinate - for it, you have to first translate axis coordinate to client coordinate and then use solve nearest
-        .map((series) => series.getCursorEnabled() && series.solveNearest({ x, y: 0 }))
-        .filter((solve) => !!solve)
+            .getSeries()
+            // NOTE: Heatmap series doesn't currently have direct API syntax to solve nearest from axis coordinate - for it, you have to first translate axis coordinate to client coordinate and then use solve nearest
+            .map((series) => series.getCursorEnabled() && series.solveNearest({ x, y: 0 }))
+            .filter((solve) => !!solve)
         if (solveResults.length > 0) {
             solveResults[0].x = x
             solveResults[0].y = y
@@ -191,28 +187,35 @@ const displayCursorAt = (x, y, value) => {
             solveResults[0].cursorPosition.pointMarker.y = y
             solveResults[0].intensity = value
             chart.cursor
-            .setVisible(true)
-            .setPosition({
-                pointMarker: { x: x, y: y },
-                pointMarkerScale: chart1.coordsAxis,
-                resultTable: { x: x, y: y },
-                resultTableScale: chart1.coordsAxis,
-            })
-            .setResultTable((rt) => rt.setContent(chart1.getCursorFormatting()(chart1, solveResults[0], solveResults)))
+                .setVisible(true)
+                .setPosition({
+                    pointMarker: { x: x, y: y },
+                    pointMarkerScale: chart1.coordsAxis,
+                    resultTable: { x: x, y: y },
+                    resultTableScale: chart1.coordsAxis,
+                })
+                .setResultTable((rt) => rt.setContent(chart1.getCursorFormatting()(chart1, solveResults[0], solveResults)))
         } else {
             chart.cursor.setVisible(false)
         }
     })
-
 }
 
 charts.forEach((chart) => {
     chart.series.addEventListener('pointermove', (event, info) => {
-        let intensity = 0        
+        let intensity = 0
         if (info) {
-            try { intensity = info.intensity } catch (error) { intensity = 0} 
+            try {
+                intensity = info.intensity
+            } catch (error) {
+                intensity = 0
+            }
         }
-        displayCursorAt(chart.chart.translateCoordinate(event, chart.chart.coordsAxis).x, chart.chart.translateCoordinate(event, chart.chart.coordsAxis).y, intensity)
+        displayCursorAt(
+            chart.chart.translateCoordinate(event, chart.chart.coordsAxis).x,
+            chart.chart.translateCoordinate(event, chart.chart.coordsAxis).y,
+            intensity,
+        )
     })
     chart.series.addEventListener('pointerleave', (event) => hideCursor())
 })
